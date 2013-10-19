@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'billing',
     'organization',
     'pto_requests',
+    'vatio',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
