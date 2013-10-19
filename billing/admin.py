@@ -1,4 +1,4 @@
 from django.contrib import admin
-from billing.models import Plans
+from billing.models import Plan
 
-admin.site.register(Plans)
+admin.site.register(Plan)
