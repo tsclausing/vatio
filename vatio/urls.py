@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from djlngo.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
 # Uncomment the next two lines to enable the admin:
