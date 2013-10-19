@@ -1,1 +1,1 @@
-web: gunicorn vatio.wsgi
+web: newrelic-admin run-program gunicorn vatio.wsgi
