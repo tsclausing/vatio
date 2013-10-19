@@ -22,6 +22,7 @@ psycopg2==2.5.1
 pyflakes==0.7.3
 pyzmq==13.1.0
 requests==2.0.0
+simplejson==3.3.1
 static==0.4
 tornado==3.1.1
 wsgiref==0.1.2
