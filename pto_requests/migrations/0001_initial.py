@@ -8,52 +8,23 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Department.org'
-        db.add_column(u'accounts_department', 'org',
-                      self.gf('django.db.models.fields.related.OneToOneField')(default=2, to=orm['accounts.Organization'], unique=True),
-                      keep_default=False)
-
-        # Adding M2M table for field dept on 'Department'
-        m2m_table_name = db.shorten_name(u'accounts_department_dept')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('department', models.ForeignKey(orm[u'accounts.department'], null=False)),
-            ('organization', models.ForeignKey(orm[u'accounts.organization'], null=False))
+        # Adding model 'PtoRequest'
+        db.create_table(u'pto_requests_ptorequest', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
+            ('start_datetime', self.gf('django.db.models.fields.DateTimeField')()),
+            ('end_datetime', self.gf('django.db.models.fields.DateTimeField')()),
+            ('request_type', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
         ))
-        db.create_unique(m2m_table_name, ['department_id', 'organization_id'])
+        db.send_create_signal(u'pto_requests', ['PtoRequest'])
 
 
     def backwards(self, orm):
-        # Deleting field 'Department.org'
-        db.delete_column(u'accounts_department', 'org_id')
-
-        # Removing M2M table for field dept on 'Department'
-        db.delete_table(db.shorten_name(u'accounts_department_dept'))
+        # Deleting model 'PtoRequest'
+        db.delete_table(u'pto_requests_ptorequest')
 
 
     models = {
-        u'accounts.department': {
-            'Meta': {'object_name': 'Department'},
-            'dept': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'parent+'", 'null': 'True', 'to': u"orm['accounts.Organization']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'org': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['accounts.Organization']", 'unique': 'True'})
-        },
-        u'accounts.organization': {
-            'Meta': {'object_name': 'Organization'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'accounts.profile': {
-            'Meta': {'object_name': 'Profile'},
-            'dept': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'profile+'", 'null': 'True', 'to': u"orm['accounts.Organization']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_org_admin': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'org': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['accounts.Organization']", 'unique': 'True', 'null': 'True'}),
-            'phone': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
-            'timezone': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
-        },
         u'auth.group': {
             'Meta': {'object_name': 'Group'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -89,7 +60,15 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        u'pto_requests.ptorequest': {
+            'Meta': {'object_name': 'PtoRequest'},
+            'end_datetime': ('django.db.models.fields.DateTimeField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'request_type': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
+            'start_datetime': ('django.db.models.fields.DateTimeField', [], {}),
+            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
         }
     }
 
-    complete_apps = ['accounts']
+    complete_apps = ['pto_requests']
