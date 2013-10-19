@@ -17,6 +17,8 @@ output_style = :compressed
 # line_comments = false
 color_output = false
 
+sass_options = {:cache => false}
+
 
 # If you prefer the indented syntax, you might want to regenerate this
 # project again passing --syntax sass, or you can uncomment this:
