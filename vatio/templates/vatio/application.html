@@ -31,7 +31,7 @@
     {% endblock main_css %}  
 
     {% block foundation_modernizer %}
-    	<script src="{% static 'gunslinger/js/vendor/custom.modernizr.js' %}"></script>
+    	<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
     {% endblock foundation_modernizer %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %}>
@@ -47,7 +47,7 @@
     {% endblock jquery %}
 
     {% block foundation_js %}
-    	<script src="{% static 'gunslinger/js/foundation/foundation.min.js' %}"></script>
+    	<script src="{% static 'js/foundation/foundation.min.js' %}"></script>
 		{% foundation_include "topbar" %}
     {% endblock foundation_js %}
 
@@ -55,7 +55,7 @@
 	{% endblock body_js %}
 
     {% block main_js %}
-		<script src="{% static 'gunslinger/js/functions.min.js' %}"></script>
+		<script src="{% static 'js/functions.min.js' %}"></script>
     {% endblock main_js %}
 </body>
 </html>
