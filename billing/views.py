@@ -6,5 +6,5 @@ from .models import Plan
 def plans(request):
     plans = Plan.objects.all()
     return {
-        'plans': plans
+        'plans': [x for x in plans]
     }
