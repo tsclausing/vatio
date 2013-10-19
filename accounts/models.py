@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 import simple_audit
 
-from organization import Organization, Department
+from organization.models import Organization, Department
 
 
 class Profile(models.Model):
@@ -14,6 +14,7 @@ class Profile(models.Model):
     dept = models.ManyToManyField(Organization, null=True, related_name='profile+')
     is_org_admin = models.BooleanField(default=False)
     is_org_delegate = models.BooleanField(default=False)
+    is_dept_admin = models.BooleanField(default=False)
     timezone = models.CharField(max_length=255, blank=True)
 
 
