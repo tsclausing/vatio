@@ -9,7 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'vatio.views.index', name='index'),
+    url(r'^$', 'vatio.views.index', name='index'),
+	url(r'^kitchensink/$', 'vatio.views.kitchensink', name='kitchensink'),
     # url(r'^vatio/', include('vatio.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

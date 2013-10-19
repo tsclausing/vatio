@@ -21,7 +21,7 @@
     {% endblock base_title %}
 
     {% block main_css %}
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700|Roboto:300,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300,700' rel='stylesheet' type='text/css'>
 	    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
 	    <link rel="stylesheet" href="{% static 'css/foundation.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/application.css' %}" />
@@ -49,6 +49,8 @@
     {% block foundation_js %}
     	<script src="{% static 'js/foundation/foundation.min.js' %}"></script>
 		{% foundation_include "topbar" %}
+		{% foundation_include "forms" %}
+		{% foundation_include "section" %}
     {% endblock foundation_js %}
 
     {% block body_js %}
