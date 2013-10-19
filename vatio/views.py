@@ -1,4 +1,3 @@
-
 from vatio.decorators import render_to
 
 
