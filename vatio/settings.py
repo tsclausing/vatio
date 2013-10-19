@@ -132,7 +132,10 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'simple_audit',
-    'accounts'
+    'accounts',
+    'billing',
+    'organization',
+    'pro_requests',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
