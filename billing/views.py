@@ -1,9 +1,9 @@
-from vatio.decorators import render_to
+from vatio.decorators import render_json
 from .models import Plan
 
 
-@render_to('vatio/index.html')
-def plans_selection(request):
+@render_json()
+def plans(request):
     plans = Plan.objects.all()
     return {
         'plans': plans
