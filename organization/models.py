@@ -13,4 +13,4 @@ class Department(models.Model):
     dept = models.ManyToManyField(Organization, null=True, related_name='parent+')
 
 
-simple_audit.register(Organization, Department, Profile)
+simple_audit.register(Organization, Department)
