@@ -320,3 +320,10 @@ img.alignleft, object.alignleft, embed.alignleft { float: left; }
 img.aligncenter, object.aligncenter, embed.aligncenter { margin: 0 auto; display: block; }
 img.alignright, object.alignright, embed.alignright { float: right; }
 
+#header {
+	.logo {
+		width: 100px;
+		height: auto;
+		margin-left: -10px;
+	}
+}

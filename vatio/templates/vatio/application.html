@@ -11,7 +11,7 @@
 	{% block open_graph_meta %}
 		<meta property="og:title" content="Vat.io" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="{% static 'images/logo-square.png' %}" />
+		<meta property="og:image" content="{% static 'images/vatio.jpg' %}" />
 		<meta property="og:url" content="http://www.vat.io{{ request.get_full_path }}" />
 		<meta property="og:description" content="We're fucking awesome." />
 	{% endblock open_graph_meta %}
@@ -26,8 +26,8 @@
 	    <link rel="stylesheet" href="{% static 'css/foundation.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/application.css' %}" />
 		
-		<link rel="shortcut icon" href="{% static 'images/logo-small.png' %}" />
-		<link rel="apple-touch-icon" href="{% static 'images/logo-small.png' %}"/>
+		<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+		<link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}"/>
     {% endblock main_css %}  
 
     {% block foundation_modernizer %}
@@ -35,8 +35,28 @@
     {% endblock foundation_modernizer %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %}>
-	<div id="header">
-		
+	<div id="header" class="contain-to-grid fixed">
+		<nav class="top-bar">
+		  <ul class="title-area">
+		    <li class="name">
+		      <h1><a href="#"><img src="{% static 'images/vatio.jpg' %}" class="logo" alt="Vat.io"></a></h1>
+		    </li>
+		    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+		  </ul>
+		  <section class="top-bar-section">
+		    <ul class="right">
+			{% if user.profile.is_org_admin or user.profile.is_org_delegate or user.profile.is_dept_admin %}
+		    	<li><a href="#">Queue</a></li>
+				<li><a href="#">Team</a></li>
+				<li><a href="#">Settings</a></li>
+			{% else %}
+				<li class="has-form">
+					<a class="button radius" href="#">Sign up</a>
+				</li>
+			{% endif %}
+		    </ul>
+		  </section>
+		</nav>
 	</div>
 	<div id="content">
     	{% block document_body %}{% endblock document_body %}
