@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     (r'^pto_requests/', include('pto_requests.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, }),
     (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^account/', include('account.urls')),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -11,7 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, unique=True)
     phone = models.CharField(max_length=15, blank=True)
     org = models.OneToOneField(Organization, null=True)
-    dept = models.ManyToManyField(Organization, null=True, related_name='profile+')
+    dept = models.ManyToManyField(Department, null=True, blank=True, related_name='profile+')
     is_org_admin = models.BooleanField(default=False)
     is_org_delegate = models.BooleanField(default=False)
     is_dept_admin = models.BooleanField(default=False)
