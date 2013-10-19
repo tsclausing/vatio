@@ -1504,6 +1504,12 @@ $topbar-link-color-hover: $primary-color;
 //$topbar-link-color-active: #fff;
 $topbar-link-weight: 300;
 .top-bar {
+	.divider {
+		@media #{$small} {
+			height: 20px !important;
+			margin-top: 20px;
+		}
+	}
 	.has-form {
 		.button {
 			color: #fff !important;
@@ -1538,8 +1544,8 @@ $topbar-menu-icon-color-toggled: $primary-color;
 //$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 //
 ///* Divider Styles */
-//$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
-//$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+$topbar-divider-border-bottom: 1px solid #eee;
+$topbar-divider-border-top: none;
 //
 ///* Sticky Class */
 //$topbar-sticky-class: ".sticky";

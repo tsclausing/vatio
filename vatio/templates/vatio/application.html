@@ -44,17 +44,19 @@
 		    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 		  </ul>
 		  <section class="top-bar-section">
-		    <ul class="right">
-			{% if user.profile.is_org_admin or user.profile.is_org_delegate or user.profile.is_dept_admin %}
-		    	<li><a href="#">Queue</a></li>
-				<li><a href="#">Team</a></li>
-				<li><a href="#">Settings</a></li>
-			{% else %}
-				<li class="has-form">
-					<a class="button radius" href="#">Sign up</a>
-				</li>
-			{% endif %}
-		    </ul>
+		  	  <ul class="right">
+				{% if user.profile.is_org_admin or user.profile.is_org_delegate or user.profile.is_dept_admin %}
+			    	<li><a href="#">Queue</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Team</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Settings</a></li>
+				{% else %}
+					<li class="has-form">
+						<a class="button radius" href="#">Sign up</a>
+					</li>
+				{% endif %}
+			    </ul>
 		  </section>
 		</nav>
 	</div>
