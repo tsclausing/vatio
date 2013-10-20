@@ -10,11 +10,11 @@ def pto_requests(request, id=None):
         else:
             pto_requests = PtoRequest.objects.all()
         return {
-            'pto_requests': {
+            'pto_requests': [{
                 'id': x.id,
                 'name': x.user.name,
                 'start_datetime': x.start_datetime,
                 'end_datetime': x.start_datetime,
                 'request_type': x.request_type,
-            } for x in pto_requests
+            } for x in pto_requests]
         }
