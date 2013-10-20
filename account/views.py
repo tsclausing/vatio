@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
 from vatio.decorators import render_json, render_to
-from Organizations.models import Organization, Department
+from organizations.models import Organization, Department
 
 from .forms import ManagerUserInviteForm
 from .models import PendingUserInvite
