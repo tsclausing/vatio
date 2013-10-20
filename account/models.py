@@ -26,4 +26,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_user_profile, sender=User, dispatch_uid='0a0bd29e01d9418fb9e20635a7761800')
 
-simple_audit.register(Organization, Department, Profile)
+
+class PendingUserInvite(models.Model):
+    """ Model for storing invited user information
+    """
+    org = models.OneToOneField(Organization, null=False)
+    dept = models.OneToOneField(Department, null=True)
+    email = models.EmailField(null=False)
+    is_active = models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return '{0} - {1} - {2}'.format(self.email, self.is_active, self.uuid)
+
+
+simple_audit.register(Profile, PendingUserInvite)
