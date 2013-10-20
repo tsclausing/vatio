@@ -10,7 +10,8 @@ class Organization(models.Model):
 class Department(models.Model):
     name = models.CharField(max_length=255)
     org = models.OneToOneField(Organization, blank=False)
-    dept = models.ManyToManyField(Organization, null=True, related_name='parent+')
+    dept = models.ForeignKey('Department', null=True, blank=True)
+
 
 
 simple_audit.register(Organization, Department)

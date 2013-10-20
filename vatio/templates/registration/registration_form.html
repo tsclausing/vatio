@@ -1,26 +1,38 @@
 {% extends "vatio/application.html" %}
 
-{% block title %}Sign up{% endblock %}
 
 {% block document_body %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h1 class="aligncenter">Account Creation</h1>
+        </div>
+    </div>
 
   {% if form.errors %}
   <p class="errors">Please correct the errors below: {{ form.non_field_errors }}</p>
   {% endif %}
 
-  <h1>Create an account</h1>
- <div class="row">
   <form method="post" action="" class="">
   <fieldset>
   <legend>Account Setup</legend>
 	{% csrf_token %}
-    <p>
+      <div class="row">
+          <div class="large-8 columns">
+              <label for="id_email" class="{% if form.email.errors %} error {%  endif %}">Username:</label>
+              {{ form.username }}
+
+          {% if form.email.errors %}
+              <small class="errors">{{ form.email.errors.as_text }}</small>
+          {% endif %}
+          </div>
+      </div>
+    <div class="row">
       <label for="id_email">Email address:</label>
+        {{ form.email }}
       {% if form.email.errors %}
-        <p class="errors">{{ form.email.errors.as_text }}</p>
+        <small class="errors">{{ form.email.errors.as_text }}</small>
       {% endif %}
-      {{ form.email }}
-    </p>
+    </div>
     <p>
       <label for="id_password1">Password:</label>
       {% if form.password1.errors %}
