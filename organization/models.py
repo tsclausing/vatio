@@ -1,6 +1,6 @@
 from django.db import models
 
-import simple_audit
+#import simple_audit
 
 
 class Organization(models.Model):
@@ -9,9 +9,9 @@ class Organization(models.Model):
 
 class Department(models.Model):
     name = models.CharField(max_length=255)
-    org = models.OneToOneField(Organization, blank=False)
+    org = models.OneToOneField(Organization, blank=False, null=True)
     dept = models.ForeignKey('Department', null=True, blank=True)
 
 
 
-simple_audit.register(Organization, Department)
+#simple_audit.register(Organization, Department)
