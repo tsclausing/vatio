@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
 from vatio.decorators import render_json, render_to
-from organizations.models import Organization, Department
+from organization.models import Organization, Department
 
 from .forms import ManagerUserInviteForm
 from .models import PendingUserInvite
@@ -65,10 +65,11 @@ def manager_invite_users(request):
                 user_invite_notification(pui.uuid)
                 users_list.append(email)
         return redirect('account_view')
+
     else:
         form = ManagerUserInviteForm()
-    return {
-        'form': form,
-        'org_name': org.name,
-        'org_id': org.id
-    }
+        return {
+            'form': form,
+            'org_name': org.name,
+            'org_id': org.id
+        }
