@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-import simple_audit
 
 from organization.models import Organization, Department
 
@@ -16,6 +15,8 @@ class Profile(models.Model):
     is_org_delegate = models.BooleanField(default=False)
     is_dept_admin = models.BooleanField(default=False)
     timezone = models.CharField(max_length=255, blank=True)
+
+
 
 
 def create_user_profile(sender, instance, created, **kwargs):
@@ -39,4 +40,3 @@ class PendingUserInvite(models.Model):
         return '{0} - {1} - {2}'.format(self.email, self.is_active, self.uuid)
 
 
-simple_audit.register(Profile, PendingUserInvite)

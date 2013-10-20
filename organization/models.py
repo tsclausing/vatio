@@ -10,14 +10,11 @@ class Organization(models.Model):
         return self.name
 
 
-
 class Department(models.Model):
     name = models.CharField(max_length=255)
-    org = models.ManyToManyField(Organization, blank=False, null=True)
-    dept = models.ForeignKey('Department', null=True, blank=True)
-
+    org = models.ManyToManyField(Organization, null=True, blank=True, related_name='departments+')
 
     def __str__(self):
-        return ' - '.join([self.name, self.org, self.dept])
+        return self.name
 
 #simple_audit.register(Organization, Department)
