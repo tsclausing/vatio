@@ -320,189 +320,94 @@ img.alignleft, object.alignleft, embed.alignleft { float: left; }
 img.aligncenter, object.aligncenter, embed.aligncenter { margin: 0 auto; display: block; }
 img.alignright, object.alignright, embed.alignright { float: right; }
 
-#searchContainer {
-	background: darken($body-bg, 5%);
-	width: 100%;
-	height: auto;
-	padding: 15px 0px;
-	input {
-		&[type="text"] {
-			height: 30px;
-			margin-bottom: 0px;
-		}
-	}
-	.switchContainer {
-		width: 100%;
-		margin-top: 2px;
-		float: right;
-		@media #{$small} {
-			width: 120px;
-		}
-		span:last-child {
-			margin-top: 1px;
-			width: 1.65em;
-			height: 1.65em;
-		}
-		* { margin-bottom: 0px; }
+#header {
+	.logo {
+		width: 100px;
+		height: auto;
+		margin-left: -10px;
 	}
 }
 
-.tagInputHold {
-	min-height: 30px;
-	width: 100%;
-	background: #fff;
-	margin-top: 20px;
-	margin-bottom: 15px;
-	@media #{$small} {
-		margin-top: 6px;
-		margin-bottom: 0px;
-	}
-	padding: 0px 8px;
-	@include box-sizing(border-box);
-	@include border-radius($global-radius);
-	@include single-box-shadow($secondary-color, 0px, 2px, 0px);
-	ul {
-		overflow: hidden;
-		list-style-type: none;
-		padding: 0px;
-		margin: 0px;
-		margin-top: -6px;
-		li {
-			float: left;
-			height: 26px;
-			margin-right: 10px;
-			margin-top: 1px;
-			margin-bottom: 2px;
-			span {
-				cursor: pointer;
-				@include single-transition(color, 0.1s, linear);
-				&:hover { background: darken($primary-color, 5%); }
-			}
-		}
-	}
-	.tagInput {
-		margin: 0px;
-		padding: 0px;
-		width: 84px;
-		height: 26px;
-		background: transparent !important;
-		@include single-box-shadow(none);
-		&.skinny { width: 35px; }
-		&:focus { @include single-box-shadow(none); }
-	}
-	&.larger {
-		min-height: 40px;
-		li {
-			margin-top: 7px;
-			margin-bottom: 5px;
-		}
-	}
+img.round { @include border-radius(1000px); }
+
+.headerBG {
+	background: $secondary-color;
+	padding: 5px;
 }
 
-.listInput {
-	list-style-type: none;
+.queue {
 	margin-left: 0px;
-	margin-top: 15px;
-	@include border-radius($global-radius);
-	li {
-		.dropdown {
-			height: 40px !important;
-			@include single-box-shadow(none);
-		
-			.current {
-				padding-left: 2px;
-				line-height: 42px !important;
+	.queueItem {
+		list-style-type: none;
+		padding: 10px 0px;
+		border-bottom: 1px solid #eee;
+		.large-9 {
+			padding-left: 10px !important;
+			h4 {
+				font-size: 1.2em;
+				margin: 0px;
 			}
-			.selector { height: 42px !important; }
-		}
-		input[type="text"] {
-			@include single-box-shadow(none);
-			@include border-radius(0px !important);
-		}
-		&.row {
-			* { margin-bottom: 0px !important; }
-		}
-		&:first-child {
-			.dropdown { @include border-radius($global-radius 0px 0px 0px); }
-			input[type="text"] { @include border-radius(0px $global-radius 0px 0px !important); }
-		}
-		&.add {
-			background: darken($secondary-color, 15%);
-			color: #fff;
-			text-align: center;
-			padding: 5px 0px;
-			cursor: pointer;
-			font-weight: bold;
-			font-size: 0.9em;
-			@include border-radius(0px 0px $global-radius $global-radius);
-		}
-	}
-}
-
-#content {
-	margin-top: 20px;
-	.wookmark { position: relative; }
-	.hacker, .warrant {
-		position: relative;
-		background: #fff;
-		padding: 10px;
-		width: 220px;
-		@include single-box-shadow(darken($secondary-color, 15%), 0px, 3px, 0px);
-		@include border-radius($global-radius);
-		img {
-			display: block;
-			margin: 0 auto;
-			@include border-radius($global-radius);
-		}
-		h3, h4, p { color: #000; }
-		h3 { font-size: 1.25em; }
-		h4 {
-			font-size: 1em;
-			margin-top: -10px;
-			margin-bottom: 0px;
-		}
-		p {
-			font-size: 0.9em;
-			line-height: 1.2em;
-		}
-		.price {
-			position: absolute;
-			width: 100%;
-			margin-left: -10px;
-			padding: 10px 0px;
-			background: $primary-color;
-			text-align: center;
-			margin-top: -50px;
-			span {
-				font-size: 1.35em;
-				font-family: $header-font-family;
-				font-weight: bold;
+			p {
+				font-size: 0.8em;
+				margin-bottom: 0px;
+				&:first-of-type { font-style: italic; }
 			}
 		}
-		.social-networks {
-			margin: 0px;
-			li {
-				margin-left: 0px;
-				margin-right: 8px;
-				font-size: 0.9em;
-				a {
-					color: darken($secondary-color, 15%);
-					&:hover { color: $primary-color; }
+		.options {
+			overflow: hidden;
+			margin-top: 10px;
+			.accept, .reject {
+				display: block;
+				text-align: center;
+				width: 50%;
+				height: 40px;
+				line-height: 40px;
+				float: left;
+				@include transition(all 0.1s linear);
+			}
+			.accept {
+				font-size: 1.5em;
+				background: $success-color;
+				color: lighten($success-color, 25%);
+				&:hover {
+					color: #eee;
+					background: darken($success-color, 5%);
+				}
+			}
+			.reject {
+				font-size: 1.25em;
+				background: $alert-color;
+				color: lighten($alert-color, 25%);
+				&:hover {
+					color: #eee;
+					background: darken($alert-color, 5%);
 				}
 			}
 		}
-		.hacker-tags {
-			margin: 10px 0px;
-			li {
-				margin-left: 0px;
-				margin-right: 4px;
-				margin-bottom: 2px;
-				height: 24px;
-			}
-		}
-		.buttonHold {
-			height: 40px;
+		&:last-of-type { border-bottom: 0px; }
+	}
+}
+
+.conflicts {
+	margin-left: 0px;
+	.conflictItem {
+		list-style-type: none;
+		@include box-sizing(border-box);
+		padding: 10px;
+		margin: 10px 0px;
+		p { margin-bottom: 0px; }
+		h4 { font-size: 1.25em; }
+	}
+}
+
+.calendar {
+	width: 100%;
+	thead {
+		th {
+			text-align: center;
+			border-right: 1px solid #ccc;
+			width: 14.285%;
+			&:last-child { border-right: none; }
 		}
 	}
-	.warrant { padding-top: 60px; }
 }

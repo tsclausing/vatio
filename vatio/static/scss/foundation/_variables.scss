@@ -1,4 +1,4 @@
-@import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius", "compass/css3/background-size", "compass/css3/box-sizing", "compass/layout/sticky-footer";
+@import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius", "compass/css3/box-sizing", "compass/css3/background-size", "compass/layout/sticky-footer";
 
 //
 // Foundation Variables
@@ -65,9 +65,9 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-$body-bg: #333;
-$body-font-color: #fafafa;
-$body-font-family: "Roboto", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-bg: #fff;
+$body-font-color: #333;
+$body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: 300;
 // $body-font-style: normal;
 
@@ -81,10 +81,10 @@ $body-font-weight: 300;
 
 // Colors
 
-$primary-color: #ef5e10;
+$primary-color: #0094cf;
 $secondary-color: #eee;
-$alert-color: #ea3556;
-$success-color: #c4d117;
+$alert-color: #E84D6F;
+$success-color: #32CC8D;
 
 // Make sure border radius matches unless we want it different.
 
@@ -174,9 +174,9 @@ $small: "only screen and (min-width: #{$small-screen})";
 
 // Control header font styles
 
-$header-height: 80px;
-$header-font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $header-font-weight: bold;
+$header-height: 60px;
+$header-font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$header-font-weight: 700;
 // $header-font-style: normal;
 $header-font-color: $body-font-color;
 // $header-line-height: 1.4;
@@ -196,7 +196,7 @@ $header-font-color: $body-font-color;
 // Control how subheaders are styled.
 
 // $subheader-line-height: 1.4;
-$subheader-font-color: $secondary-color;
+$subheader-font-color: darken($secondary-color, 15%);
 // $subheader-font-weight: 300;
 // $subheader-top-margin: .2em;
 // $subheader-bottom-margin: .5em;
@@ -236,7 +236,7 @@ a { @include single-transition(color, 0.1s, linear); }
 
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
-$hr-border-color: lighten($body-bg, 30%);
+$hr-border-color: $secondary-color;
 // $hr-margin: em-calc(20);
 
 // Style lists
@@ -305,7 +305,7 @@ $form-label-font-weight: $body-font-weight;
 $form-label-font-color: $body-font-color;
 // $form-label-bottom-margin: em-calc(3);
 // $input-font-family: inherit;
-// $input-font-color: $body-font-color;
+$input-font-color: $body-font-color;
 // $input-font-size: em-calc(14);
 $input-bg-color: #fff;
 $input-focus-bg-color: $input-bg-color;
@@ -335,8 +335,6 @@ form {
 		}
 	}
 	textarea {
-		resize: none;
-		min-height: 100px;
 		@include border-radius($global-radius);
 		@include single-box-shadow($secondary-color, 0px, 2px, 0px);
 		&.error { @include border-radius($global-radius $global-radius 0px 0px); }
@@ -348,7 +346,7 @@ form {
 		margin-top: 4px;
 		height: 34px;
 		line-height: 34px;
-		color: $body-bg !important;
+		color: #fff !important;
 		font-size: 1.1em;
 	}
 }
@@ -414,14 +412,14 @@ $input-error-message-font-color-alt: $body-font-color;
 
 // We use these to control button text styles.
 
-$button-font-family: $header-font-family;
+// $button-font-family: inherit;
 // $button-font-color: #fff;
-// $button-font-color-alt: $body-font-color;
+$button-font-color-alt: $body-font-color;
 // $button-font-med: em-calc(16);
 // $button-font-tny: em-calc(11);
 // $button-font-sml: em-calc(13);
 // $button-font-lrg: em-calc(20);
-$button-font-weight: bold;
+$button-font-weight: $body-font-weight;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
@@ -438,8 +436,8 @@ $button-border-width: 0px;
 	@include single-box-shadow(darken($primary-color, 15%), 0px, 3px, 0px);
 	&.tiny { @include single-box-shadow(darken($primary-color, 15%), 0px, 2px, 0px); }
 	&:active {
-		margin-top: 2px;
-		&.tiny { margin-top: 1px; }
+		top: 2px;
+		&.tiny { top: 1px; }
 		@include single-box-shadow(darken($primary-color, 15%), 0px, 1px, 0px);
 	}
 	&.disabled {
@@ -463,20 +461,6 @@ $button-border-width: 0px;
 		@include single-box-shadow(darken($alert-color, 15%), 0px, 3px, 0px);
 		&.tiny { @include single-box-shadow(darken($alert-color, 15%), 0px, 2px, 0px); }
 		&:active { @include single-box-shadow(darken($alert-color, 15%), 0px, 1px, 0px); }
-	}
-	&.github {
-		$github: #333;
-		background: $github;
-		@include single-box-shadow(darken($github, 15%), 0px, 3px, 0px);
-		&:hover { background: darken($github, 5%); }
-		&:active { @include single-box-shadow(darken($github, 15%), 0px, 1px, 0px); }
-	}
-	&.linkedin {
-		$linkedin: #4875B4;
-		background: $linkedin;
-		@include single-box-shadow(darken($linkedin, 15%), 0px, 3px, 0px);
-		&:hover { background: darken($linkedin, 5%); }
-		&:active { @include single-box-shadow(darken($linkedin, 15%), 0px, 1px, 0px); }
 	}
 }
 
@@ -593,13 +577,10 @@ $split-button-pip-color-alt: $body-font-color;
 $alert-font-weight: $body-font-weight;
 // $alert-font-size: em-calc(14);
 // $alert-font-color: #fff;
-// $alert-font-color-alt: $body-font-color;
+$alert-font-color-alt: $body-font-color;
 
 .alert-box {
-	.close {
-		font-weight: bold;
-		color: $body-bg !important;
-	}
+	.close { font-weight: bold; }
 }
 
 // We use this for close hover effect.
@@ -633,7 +614,7 @@ $alert-close-padding: 8px 4px 4px;
 
 // We use this to set the background color for the breadcrumb container.
 
-$crumb-bg: lighten($body-bg, 15%);
+$crumb-bg: $secondary-color;
 
 // We use these to set the padding around the breadcrumbs.
 
@@ -706,7 +687,7 @@ $custom-form-border-size: 0px;
 // $custom-form-bg: #fff;
 $custom-form-bg-disabled: $secondary-color;
 // $custom-form-input-size: 16px;
-// $custom-form-check-color: $body-font-color;
+$custom-form-check-color: $body-font-color;
 // $custom-form-check-size: 16px;
 // $custom-form-radio-size: 8px;
 $custom-form-checkbox-radius: $global-radius;
@@ -715,7 +696,7 @@ $custom-form-checkbox-radius: $global-radius;
 	.custom {
 		&.radio, &.checkbox {
 			border: 1px solid $secondary-color;
-			@include single-box-shadow(lighten($body-bg, 30%), 0px, 1px, 0px);
+			@include single-box-shadow($secondary-color, 0px, 1px, 0px);
 		}
 		&.dropdown.small, &.dropdown.medium, &.dropdown.large {
 			height: 40px;
@@ -747,11 +728,11 @@ $custom-form-checkbox-radius: $global-radius;
 $custom-select-bg: #fff;
 $custom-select-fade-to-color: #fff;
 $custom-select-border-color: darken($secondary-color, 15%);
-$custom-select-triangle-color: $body-bg;
-$custom-select-triangle-color-open: $body-bg;
+$custom-select-triangle-color: $body-font-color;
+$custom-select-triangle-color-open: $body-font-color;
 // $custom-select-height: em-calc(13) + ($form-spacing * 1.5);
 // $custom-select-margin-bottom: em-calc(20);
-$custom-select-font-color-selected: $body-bg;
+$custom-select-font-color-selected: $body-font-color;
 $custom-select-disabled-color: darken($secondary-color, 15%);
 
 // We use these to control the style of the custom select dropdown element.
@@ -761,10 +742,10 @@ $custom-select-disabled-color: darken($secondary-color, 15%);
 $custom-dropdown-border-color: darken($secondary-color, 15%);
 // $custom-dropdown-border-width: 1px;
 // $custom-dropdown-border-style: solid;
-$custom-dropdown-font-color: $body-bg;
+$custom-dropdown-font-color: $body-font-color;
 // $custom-dropdown-font-size: em-calc(14);
 $custom-dropdown-color-selected: $secondary-color;
-$custom-dropdown-font-color-selected: $body-bg;
+$custom-dropdown-font-color-selected: $body-font-color;
 $custom-dropdown-shadow: 0px;
 // $custom-dropdown-offset-top: auto;
 // $custom-dropdown-list-padding: em-calc(4);
@@ -906,7 +887,7 @@ $joyride-screenfill: rgba(0,0,0,0.65);
 
 // $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
 // $keystroke-font-size: em-calc(14);
-// $keystroke-font-color: $body-font-color;
+$keystroke-font-color: $body-font-color;
 // $keystroke-font-color-alt: #fff;
 // $keystroke-function-factor: 7%;
 
@@ -939,15 +920,8 @@ $label-padding: em-calc(5 15);
 
 $label-font-sizing: em-calc(12);
 $label-font-weight: $body-font-weight;
-$label-font-color: $body-bg;
-$label-font-color-alt: $body-font-color;
-
-.label {
-	@include single-box-shadow(darken($primary-color, 15%), 0px, 2px, 0px);
-	&.secondary { @include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px); }
-	&.alert { @include single-box-shadow(darken($alert-color, 15%), 0px, 2px, 0px); }
-	&.success { @include single-box-shadow(darken($success-color, 15%), 0px, 2px, 0px); }
-}
+$label-font-color: $body-font-color;
+// $label-font-color-alt: #fff;
 
 //
 // Magellan Variables
@@ -1066,7 +1040,7 @@ $panel-border-size: 0px;
 
 // We use these to set default font colors
 
-// $panel-font-color: $body-font-color;
+$panel-font-color: $body-font-color;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
@@ -1099,7 +1073,7 @@ $price-title-color: $body-font-color;
 $price-money-bg: $secondary-color;
 // $price-money-padding: em-calc(15, 20);
 // $price-money-align: center;
-// $price-money-color: $body-font-color;
+$price-money-color: $body-font-color;
 $price-money-weight: $body-font-weight;
 // $price-money-size: em-calc(20);
 
@@ -1116,7 +1090,7 @@ $price-desc-bottom-border: 1px dotted darken($secondary-color, 15%);
 
 // We use these to control the list item styles
 
-// $price-item-color: $body-font-color;
+$price-item-color: $body-font-color;
 // $price-item-padding: em-calc(15);
 // $price-item-align: center;
 // $price-item-font-size: em-calc(14);
@@ -1125,7 +1099,7 @@ $price-item-bottom-border: 1px dotted darken($secondary-color, 15%);
 
 // We use these to control the CTA area styles
 
-// $price-cta-bg: $body-bg;
+$price-cta-bg: $body-bg;
 // $price-cta-align: center;
 // $price-cta-padding: em-calc(20 20 0);
 
@@ -1136,7 +1110,7 @@ $price-item-bottom-border: 1px dotted darken($secondary-color, 15%);
 // We use this to se the prog bar height
 
 // $progress-bar-height: em-calc(25);
-$progress-bar-color: lighten($body-bg, 5%);
+// $progress-bar-color: transparent;
 
 // We use these to control the border styles
 
@@ -1163,12 +1137,12 @@ $progress-bar-border-color: darken($secondary-color, 15%);
 
 // We use these to control the style of the reveal overlay.
 
-$reveal-overlay-bg: rgba($body-bg, 0.85);
-$reveal-overlay-bg-old: $body-bg;
+$reveal-overlay-bg: $secondary-color;
+$reveal-overlay-bg-old: $secondary-color;
 
 // We use these to control the style of the modal itself.
 
-$reveal-modal-bg: darken($body-bg, 5%);
+// $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: em-calc(20);
@@ -1179,7 +1153,7 @@ $reveal-box-shadow: 0px;
 // $reveal-close-font-size: em-calc(22);
 // $reveal-close-top: em-calc(8);
 // $reveal-close-side: em-calc(11);
-$reveal-close-color: lighten($body-bg, 15%);
+$reveal-close-color: darken($secondary-color, 15%);
 // $reveal-close-weight: bold;
 
 // We use these to control the modal border
@@ -1193,11 +1167,8 @@ $reveal-border-width: 0px;
 
 .reveal-modal {
 	@include border-radius($global-radius);
-	@include single-box-shadow(darken($body-bg, 10%), 0px, 3px, 0px);
-	z-index: 102;
+	@include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px);
 }
-
-.reveal-modal-bg { z-index: 101; }
 
 //
 // Section Variables
@@ -1211,16 +1182,16 @@ $reveal-border-width: 0px;
 
 // These style the titles
 
-$section-title-color: $body-font-color;
-$section-title-color-active: $body-font-color;
-$section-title-bg: lighten($body-bg, 5%);
-$section-title-bg-active: lighten($body-bg, 15%);
-$section-title-bg-active-tabs: lighten($body-bg, 15%);
-$section-title-bg-hover: lighten($body-bg, 15%);
+$section-title-color: $body-font-weight;
+$section-title-color-active: $body-font-weight;
+$section-title-bg: #fff;
+$section-title-bg-active: #fff;
+// $section-title-bg-active-tabs: #fff;
+$section-title-bg-hover: $secondary-color;
 
 // Want to control border size, here ya go!
 
-$section-border-size: 0px;
+// $section-border-size: 1px;
 // $section-border-style: solid;
 $section-border-color: darken($secondary-color, 15%);
 
@@ -1230,7 +1201,7 @@ $section-border-color: darken($secondary-color, 15%);
 
 // Control the color of the background and some size options
 
-$section-content-bg: lighten($body-bg, 15%);
+// $section-content-bg: #fff;
 // $section-vertical-nav-min-width: em-calc(200);
 // $section-vertical-tabs-title-width: em-calc(200);
 // $section-bottom-margin: em-calc(20);
@@ -1259,8 +1230,8 @@ $section-content-bg: lighten($body-bg, 15%);
 		section {
 			&.active {
 				.title {
-					border-top: none !important;
-					border-bottom: none !important;
+					border-top: 1px solid darken($secondary-color, 15%) !important;
+					border-bottom: 1px solid darken($secondary-color, 15%) !important;
 					border-left: 3px solid $primary-color !important;
 				}
 			}
@@ -1303,7 +1274,7 @@ $side-nav-divider-color: $secondary-color;
 		margin-bottom: 20px;
 		li {
 			padding: 15px;
-			background: lighten($body-bg, 5%);
+			background: $body-font-color;
 			border-top: 1px solid darken($secondary-color, 15%);
 			@include single-transition(all, 0.1s, linear);
 			a { color: #fff !important; }
@@ -1362,10 +1333,10 @@ $sub-nav-active-font-weight: $body-font-weight;
 
 // Controlling border styles and background colors for the switch container
 
-$switch-border-color: darken($primary-color, 15%);
+$switch-border-color: darken($secondary-color, 15%);
 // $switch-border-style: solid;
-$switch-border-width: 1px;
-$switch-bg: transparent;
+// $switch-border-width: 1px;
+$switch-bg: #fff;
 
 // We use these to control the switch heights for our default classes
 
@@ -1386,14 +1357,14 @@ $switch-bg: transparent;
 // We use these to style the switch-paddle
 
 $switch-paddle-bg: #fff;
-$switch-paddle-fade-to-color: lighten($body-bg, 5%);
-$switch-paddle-border-color: transparent;
-$switch-paddle-border-width: 0px;
+$switch-paddle-fade-to-color: #fff;
+$switch-paddle-border-color: darken($secondary-color, 15%);
+// $switch-paddle-border-width: 1px;
 // $switch-paddle-border-style: solid;
-$switch-paddle-transition-speed: 0.3s;
+$switch-paddle-transition-speed: 0.2s;
 // $switch-paddle-transition-ease: ease-out;
 $switch-positive-color: $primary-color;
-$switch-negative-color: $primary-color;
+$switch-negative-color: $secondary-color;
 
 // Outline Style for tabbing through switches
 
@@ -1405,8 +1376,12 @@ $switch-label-outline: 1px dotted darken($secondary-color, 15%);
 		&:last-of-type { color: #fff; }
 	}
 	span {
-		background: $secondary-color !important;
-		border: none !important;
+		background-color: darken($secondary-color, 15%) !important;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(darken($secondary-color, 15%)), to(darken($secondary-color, 15%))) !important;
+		background-image: -webkit-linear-gradient(top, darken($secondary-color, 15%), darken($secondary-color, 15%)) !important;
+		background-image:    -moz-linear-gradient(top, darken(#fff, 1%), darken($secondary-color, 15%)) !important;
+		background-image:      -o-linear-gradient(top, darken($secondary-color, 15%), darken($secondary-color, 15%)) !important;
+		background-image:         linear-gradient(to bottom, darken($secondary-color, 15%), darken($secondary-color, 15%)) !important;
 	}
 }
 
@@ -1416,18 +1391,18 @@ $switch-label-outline: 1px dotted darken($secondary-color, 15%);
 
 // These control the background color for the table and even rows
 
-$table-bg: lighten($body-bg, 5%);
+// $table-bg: #fff;
 $table-even-row-bg: $body-bg;
 
 // These control the table cell border style
 
 // $table-border-style: solid;
 // $table-border-size: 1px;
-$table-border-color: lighten($body-bg, 15%);
+$table-border-color: darken($secondary-color, 15%);
 
 // These control the table head styles
 
-$table-head-bg: lighten($body-bg, 15%);
+$table-head-bg: $secondary-color;
 // $table-head-font-size: em-calc(14);
 $table-head-font-color: $body-font-color;
 $table-head-font-weight: $body-font-weight;
@@ -1482,7 +1457,7 @@ $has-tip-font-color-hover: darken($primary-color, 15%);
 // $has-tip-cursor-type: help;
 
 $tooltip-padding: em-calc(10);
-$tooltip-bg: lighten($body-bg, 15%);
+$tooltip-bg: $body-font-color;
 // $tooltip-font-size: em-calc(15);
 $tooltip-font-weight: $body-font-weight;
 // $tooltip-font-color: #fff;
@@ -1494,128 +1469,84 @@ $tooltip-close-font-color: darken($secondary-color, 15%);
 // $tooltip-radius: $global-radius;
 $tooltip-pip-size: 8px;
 
+.tooltip { margin-top: -$header-height; }
+
 //
 // Top Bar Variables
 //
 
 // Background color for the top bar
 
-$topbar-bg-color: $body-bg;
-$topbar-bg: $topbar-bg-color;
-
-// Height and margin
-
-$topbar-height: $header-height;
-// $topbar-margin-bottom: 0;
-
-// Control Input height for top bar
-
-// $topbar-input-height: 2.45em;
-
-// Controlling the styles for the title in the top bar
-
-$topbar-title-weight: $body-font-weight;
-$topbar-title-font-size: em-calc(16);
-
-// Style the top bar dropdown elements
-
-$topbar-dropdown-bg: lighten($body-bg, 15%);
-$topbar-dropdown-link-color: $body-font-color;
-$topbar-dropdown-link-bg: lighten($body-bg, 15%);
-// $topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: $body-font-color;
-$topbar-dropdown-toggle-alpha: 1;
-
-// Set the link colors and styles for top-level nav
-
+$topbar-bg: #fff;
+//
+///* Height and margin */
+$topbar-height: 60px;
+//$topbar-margin-bottom: em-calc(30);
+//
+///* Control Input height for top bar */
+//$topbar-input-height: 2.45em;
+//
+///* Controlling the styles for the title in the top bar */
+//$topbar-title-weight: bold;
+//$topbar-title-font-size: em-calc(17);
+//
+///* Style the top bar dropdown elements */
+$topbar-dropdown-bg: #fafafa;
+//$topbar-dropdown-link-color: $body-bg;
+$topbar-dropdown-link-bg: #fff;
+//$topbar-dropdown-toggle-size: 5px;
+//$topbar-dropdown-toggle-color: #fff;
+//$topbar-dropdown-toggle-alpha: 0.5;
+//
+///* Set the link colors and styles for top-level nav */
 $topbar-link-color: $body-font-color;
-$topbar-link-color-hover: #fff;
-$topbar-link-color-active: $body-font-color;
-$topbar-link-weight: $body-font-weight;
-$topbar-link-font-size: em-calc(14);
-$topbar-link-hover-lightness: 0%;
-$topbar-link-bg-hover: $primary-color;
-$topbar-link-bg-active: $primary-color;
-
-$topbar-dropdown-label-color: $body-bg;
-// $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight: bold;
-// $topbar-dropdown-label-font-size: em-calc(10);
-$topbar-dropdown-label-bg: #fff;
-
-// Top menu icon styles
-
-// $topbar-menu-link-transform: uppercase;
-// $topbar-menu-link-font-size: em-calc(13);
-$topbar-menu-link-weight: $body-font-weight;
-$topbar-menu-link-color: $body-font-color;
-$topbar-menu-icon-color: $body-font-color;
-$topbar-menu-link-color-toggled: $primary-color;
-$topbar-menu-icon-color-toggled: $primary-color;
-
-// Transitions and breakpoint styles
-
-$topbar-transition-speed: 200ms;
-// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout
-// $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
-
-// Divider Styles
-
-$topbar-divider-border-bottom: none;
-$topbar-divider-border-top: 1px solid $secondary-color;
-
-// Sticky Class
-
-// $topbar-sticky-class: ".sticky";
-// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-
+$topbar-link-color-hover: $primary-color;
+//$topbar-link-color-active: #fff;
+$topbar-link-weight: 300;
 .top-bar {
-	label {
-		background: $secondary-color;
-		padding: 5px 10px;
-		text-transform: uppercase;
-		font-weight: bold;
-		font-size: 0.75em;
+	.divider {
+		@media #{$small} {
+			height: 20px !important;
+			margin-top: 20px;
+		}
 	}
 	.has-form {
-		padding: 15px !important;
-	}
-	.button {
-		font-weight: bold;
-		font-size: 1em !important;
-	}
-	#logo {
-		width: 220px;
-		height: auto;
-		margin-left: 10px;
-		margin-top: 22px;
-	}
-	li {
-		@include single-transition(all, 0.1s, linear);
-		a {
-			&:not(.button) {
-				&:hover {
-					background: $body-bg !important;
-					color: $primary-color;
-				}
-			}
+		.button {
+			color: #fff !important;
+			margin-top: 8px;
 		}
-	}
-	.dropdown {
-		li {
-			&.has-dropdown > a:after {
-				margin-top: -5px !important;
-				padding-left: 5px !important;
-			}
-			a {
-				padding: 10px !important;
-				border-left: 3px solid $secondary-color;
-				@include single-transition(all, 0.1s, linear);
-				font-weight: $body-font-weight !important;
-				&:hover {
-					border-left: 3px solid darken($secondary-color, 15%);
-				}
-			}
-		}
+		&:hover { .button { background: darken($primary-color, 5%) !important; } }
 	}
 }
+//$topbar-link-font-size: em-calc(13);
+//$topbar-link-hover-lightness: -30%; /* Darken by 30% */
+$topbar-link-bg-hover: #fff;
+//$topbar-link-bg-active: darken($topbar-bg, 3%);
+//
+//$topbar-dropdown-label-color: #555;
+//$topbar-dropdown-label-bg: lighten($topbar-bg, 5%);
+//$topbar-dropdown-label-text-transform: uppercase;
+//$topbar-dropdown-label-font-weight: bold;
+//$topbar-dropdown-label-font-size: em-calc(10);
+//
+///* Top menu icon styles */
+//$topbar-menu-link-transform: uppercase;
+//$topbar-menu-link-font-size: em-calc(13);
+//$topbar-menu-link-weight: bold;
+//$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: $body-font-color;
+//$topbar-menu-link-color-toggled: $primary-color;
+$topbar-menu-icon-color-toggled: $primary-color;
+//
+///* Transitions and breakpoint styles */
+//$topbar-transition-speed: 300ms;
+//$topbar-breakpoint: em-calc(940); /* Change to 9999px for always mobile layout */
+//$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
+//
+///* Divider Styles */
+$topbar-divider-border-bottom: 1px solid #eee;
+$topbar-divider-border-top: none;
+//
+///* Sticky Class */
+//$topbar-sticky-class: ".sticky";
+//$topbar-arrows: true;
