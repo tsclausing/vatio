@@ -10,12 +10,12 @@ def plans(request, id=None):
         else:
             plans = Plan.objects.all()
         return {
-            'plans': {
+            'plans': [{
                 'id': x.id,
                 'max_users': x.max_users,
                 'name': x.name,
                 'teams': x.teams,
                 'user_cost': float(x.user_cost),
                 'fixed_cost': float(x.fixed_cost),
-            } for x in plans
+            } for x in plans]
         }
