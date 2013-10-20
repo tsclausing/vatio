@@ -9,14 +9,19 @@ from organization.models import Organization, Department
 class Profile(models.Model):
     user = models.OneToOneField(User, unique=True)
     phone = models.CharField(max_length=15, blank=True)
-    org = models.OneToOneField(Organization, null=True)
-    dept = models.ManyToManyField(Department, null=True, blank=True, related_name='profile+')
+    org = models.ForeignKey(Organization, null=True, blank=True)
+    dept = models.ForeignKey(Department, null=True, blank=True)
     is_org_admin = models.BooleanField(default=False)
     is_org_delegate = models.BooleanField(default=False)
     is_dept_admin = models.BooleanField(default=False)
     timezone = models.CharField(max_length=255, blank=True)
 
-
+    def __str__(self):
+        return ' - '.join([
+            self.user.username,
+            str(self.org),
+            str(self.dept),
+        ])
 
 
 def create_user_profile(sender, instance, created, **kwargs):
