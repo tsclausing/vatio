@@ -330,6 +330,11 @@ img.alignright, object.alignright, embed.alignright { float: right; }
 
 img.round { @include border-radius(1000px); }
 
+.headerBG {
+	background: $secondary-color;
+	padding: 5px;
+}
+
 .queue {
 	margin-left: 0px;
 	.queueItem {
@@ -384,20 +389,14 @@ img.round { @include border-radius(1000px); }
 }
 
 .conflicts {
+	margin-left: 0px;
 	.conflictItem {
 		list-style-type: none;
-		background: #fafafa;
-		border: 1px solid #ccc;
 		@include box-sizing(border-box);
 		padding: 10px;
-		float: left !important;
-		ol {
-			li {
-				margin-bottom: 10px;
-				h5 { margin-bottom: 0px; }
-				p { margin-bottom: 0px; }
-			}
-		}
+		margin: 10px 0px;
+		p { margin-bottom: 0px; }
+		h4 { font-size: 1.25em; }
 	}
 }
 
